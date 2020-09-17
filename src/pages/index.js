@@ -3,19 +3,30 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 const Index = ({ data }) => {
-  console.log(data.file.childImageSharp)
   return (
     <div>
       <h1>The homepage</h1>
-      <Img fluid={data.file.childImageSharp.fluid} alt="the sweet tree" />
+      <img
+        style={{ maxWidth: '100%' }}
+        src={data.file.publicURL}
+        alt="Tree on a grassy hill in sunset"
+      />
+      <Img
+        fluid={data.file.childImageSharp.fluid}
+        alt="Tree on a grassy hill in sunset"
+      />
+      <Img
+        fluid={data.file.childImageSharp.fluidWebp}
+        alt="Tree on a grassy hill in sunset"
+      />
       <p>
         <span>
           Photo by{' '}
-          <a href="https://unsplash.com/@veeterzy?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-            veeterzy
+          <a href="https://unsplash.com/@itfeelslikefilm?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+            🇸🇮 Janko Ferlič
           </a>{' '}
           on{' '}
-          <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
+          <a href="https://unsplash.com/s/photos/trees?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
             Unsplash
           </a>
         </span>
@@ -26,11 +37,14 @@ const Index = ({ data }) => {
 
 export const homepageQuery = graphql`
   query HomepageQuery {
-    file(relativePath: { eq: "veeterzy-tree-in-forest.jpg" }) {
-      absolutePath
+    file(relativePath: { eq: "janko-ferlic-sundown-field.jpg" }) {
+      publicURL
       childImageSharp {
-        fluid {
+        fluid(quality: 100) {
           ...GatsbyImageSharpFluid
+        }
+        fluidWebp: fluid(quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
