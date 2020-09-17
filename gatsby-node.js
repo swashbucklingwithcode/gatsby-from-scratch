@@ -30,7 +30,6 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
 
   mdPages.data.allMarkdownRemark.edges.map(({ node }) => {
-    console.log('===================\n\n', node)
     createPage({
       path: node.frontmatter.slug,
       component: path.resolve('./src/templates/Markdown.js'),

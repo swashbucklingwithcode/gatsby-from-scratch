@@ -1,12 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-// import treeInForest from '../images/veeterzy-tree-in-forest.jpg'
+import Img from 'gatsby-image'
 
 const Index = ({ data }) => {
+  console.log(data.file.childImageSharp)
   return (
     <div>
       <h1>The homepage</h1>
-      <img src={data.file.publicURL} alt="Tree in Forest" style={{ maxWidth: 800 }} />
+      <Img fluid={data.file.childImageSharp.fluid} alt="the sweet tree" />
       <p>
         <span>
           Photo by{' '}
@@ -25,8 +26,13 @@ const Index = ({ data }) => {
 
 export const homepageQuery = graphql`
   query HomepageQuery {
-    file(relativePath: {eq: "veeterzy-tree-in-forest.jpg"}) {
-      publicURL
+    file(relativePath: { eq: "veeterzy-tree-in-forest.jpg" }) {
+      absolutePath
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
 `
