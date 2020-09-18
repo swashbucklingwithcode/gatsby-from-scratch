@@ -14,7 +14,6 @@ const Markdown = ({ data }) => {
           fluid={markdownRemark.frontmatter.featuredImage.childImageSharp.fluid}
           alt=""
           loading="eager"
-          fadeIn={false}
         />
       )}
       <p>{markdownRemark.frontmatter.description}</p>
