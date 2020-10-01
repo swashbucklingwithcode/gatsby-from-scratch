@@ -23,7 +23,7 @@ const Index = ({ data }) => {
         <span>
           Photo by{' '}
           <a href="https://unsplash.com/@itfeelslikefilm?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-            🇸🇮 Janko Ferlič
+            Janko Ferlič
           </a>{' '}
           on{' '}
           <a href="https://unsplash.com/s/photos/trees?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
