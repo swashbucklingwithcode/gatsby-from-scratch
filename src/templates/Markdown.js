@@ -5,9 +5,9 @@ const Markdown = ({ data }) => {
   const { markdownRemark } = data
 
   return (
-    <div>
+    <div className="container">
       <h1>{markdownRemark.frontmatter.title}</h1>
-      <p>{markdownRemark.frontmatter.description}</p>
+      <h2>{markdownRemark.frontmatter.description}</h2>
       <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
     </div>
   )
