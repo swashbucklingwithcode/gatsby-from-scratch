@@ -1,15 +1,16 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Layout from '../components/Layout'
 
 const Markdown = ({ data }) => {
   const { markdownRemark } = data
 
   return (
-    <div className="container">
+    <Layout>
       <h1>{markdownRemark.frontmatter.title}</h1>
       <h2>{markdownRemark.frontmatter.description}</h2>
       <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
-    </div>
+    </Layout>
   )
 }
 

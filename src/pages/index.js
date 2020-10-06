@@ -1,10 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import Layout from '../components/Layout'
 
 const Index = ({ data }) => {
   return (
-    <div>
+    <Layout>
       <h1>The homepage</h1>
       <img
         style={{ maxWidth: '100%' }}
@@ -31,7 +32,7 @@ const Index = ({ data }) => {
           </a>
         </span>
       </p>
-    </div>
+    </Layout>
   )
 }
 
