@@ -7,17 +7,8 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <h1>The homepage</h1>
-      <img
-        style={{ maxWidth: '100%' }}
-        src={data.file.publicURL}
-        alt="Tree on a grassy hill in sunset"
-      />
       <Img
         fluid={data.file.childImageSharp.fluid}
-        alt="Tree on a grassy hill in sunset"
-      />
-      <Img
-        fluid={data.file.childImageSharp.fluidWebp}
         alt="Tree on a grassy hill in sunset"
       />
       <p>
