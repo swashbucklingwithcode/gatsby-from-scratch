@@ -1,7 +1,6 @@
 ---
 title: Would you look at that?
 description: Would you just look at it?
-slug: /first-markdown
 ---
 
 ![the alt text](../images/janko-ferlic-sundown-field.jpg)
