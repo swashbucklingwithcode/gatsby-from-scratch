@@ -4,28 +4,51 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const mdPages = await graphql(`
-    query {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              slug
+  return new Promise((resolve, reject) => {
+    const blogPost = path.resolve('./src/templates/Markdown.js')
+    resolve(
+      graphql(
+        `
+          {
+            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+              edges {
+                node {
+                  fields {
+                    slug
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
+              }
             }
           }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
         }
-      }
-    }
-  `)
 
-  mdPages.data.allMarkdownRemark.edges.map(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve('./src/templates/Markdown.js'),
-      context: {
-        slug: node.fields.slug,
-      },
-    })
+        // Create blog posts pages.
+        const posts = result.data.allMarkdownRemark.edges;
+
+        posts.forEach((post, index) => {
+          const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+          const next = index === 0 ? null : posts[index - 1].node;
+
+          createPage({
+            path: post.node.fields.slug,
+            component: blogPost,
+            context: {
+              slug: post.node.fields.slug,
+              previous,
+              next,
+            },
+          })
+        })
+      })
+    )
   })
 }
 
@@ -34,9 +57,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
-
     createNodeField({
-      name: 'slug',
+      name: `slug`,
       node,
       value,
     })
