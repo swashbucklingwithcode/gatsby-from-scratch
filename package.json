@@ -18,6 +18,7 @@
     "gatsby-plugin-feed": "^2.6.0",
     "gatsby-plugin-manifest": "2.5.1",
     "gatsby-plugin-offline": "3.3.1",
+    "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-sass": "^2.3.14",
     "gatsby-plugin-sharp": "^2.6.36",
     "gatsby-remark-images": "^3.3.30",
@@ -26,6 +27,7 @@
     "gatsby-transformer-sharp": "^2.5.15",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0"
   }
 }

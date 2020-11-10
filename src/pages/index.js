@@ -2,10 +2,16 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
+import Helmet from 'react-helmet'
 
 const Index = ({ data }) => {
   return (
     <Layout>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        meta={[{ name: 'description', content: data.site.siteMetadata.description }]}
+        title={data.site.siteMetadata.title}
+      />
       <h1>The homepage</h1>
       <Img
         fluid={data.file.childImageSharp.fluid}
@@ -29,6 +35,12 @@ const Index = ({ data }) => {
 
 export const homepageQuery = graphql`
   query HomepageQuery {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
     file(relativePath: { eq: "janko-ferlic-sundown-field.jpg" }) {
       publicURL
       childImageSharp {
