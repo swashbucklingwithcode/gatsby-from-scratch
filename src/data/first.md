@@ -1,7 +1,7 @@
 ---
 title: Would you look at that?
 description: Would you just look at it?
-date: "2020-10-1"
+date: 2020-10-11
 ---
 
 ![the alt text](../images/janko-ferlic-sundown-field.jpg)
